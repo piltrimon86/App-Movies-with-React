@@ -1,12 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const MovieAdd = () => {
+    const titleComponent = 'Añadir Película'
+
+    const [movieState, setMovieState] = useState({
+        title: '',
+        description: '',
+    })
+
+    const { title, description } = movieState
+
+    const getDataForm = (e) => {
+        e.preventDefault()
+
+        // Conseguir los datos del formulario
+        let target = e.target
+        let title = target.title.value
+        let description = target.description.value
+
+        // Crear objeto de la película a guardar
+
+        let movie = {
+            id: new Date().getTime(),
+            title: title,
+            description: description,
+        }
+
+        setMovieState(movie)
+        console.log(movieState)
+    }
+
     return (
         <div className="add">
-            <h3 className="title">Añadir Películas</h3>
-            <form>
-                <input type="text" placeholder="Título" />
-                <textarea placeholder="Descripción"></textarea>
+            <h3 className="title">{titleComponent}</h3>
+            <strong>
+                {title && description && 'Has creado la película: ' + title}
+            </strong>
+            <form onSubmit={getDataForm}>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Título"
+                />
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Descripción"></textarea>
                 <input type="submit" value="Guardar" />
             </form>
         </div>

@@ -26,8 +26,35 @@ const MovieAdd = () => {
             description: description,
         }
 
+        // Guardar Estado
         setMovieState(movie)
-        console.log(movieState)
+
+        // Guardar en el almacenamiento local (LocalStorage)
+
+        saveInStorage(movie)
+    }
+
+    const saveInStorage = (movie) => {
+        // Conseguir los elementos que ya tenemos en localStorage
+
+        let items = JSON.parse(localStorage.getItem('movies'))
+
+        // Comprobar si es un array
+
+        if (Array.isArray(items)) {
+            // Añadimos dentro del array si el item es un array
+            items.push(movie)
+        } else {
+            // En caso que no sea un array, creamos un array nuevo con la nueva peli
+            items = [movie]
+        }
+
+        // Guardar en el localStorage
+
+        localStorage.setItem('movies', JSON.stringify(items))
+        // Devolver un objeto
+
+        return movie
     }
 
     return (

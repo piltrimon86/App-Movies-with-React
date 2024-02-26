@@ -227,3 +227,7 @@ input[type='button'] {
         width: 80%;
     }
 }
+
+.notFound {
+    color: #9b0202;
+}

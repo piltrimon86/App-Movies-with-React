@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import MovieEdit from './MovieEdit'
 
 const MovieList = ({ listState, setListState }) => {
     // const [listState, setListState] = useState([])
+
+    const [edit, setEdit] = useState(0)
 
     useEffect(() => {
         getMovies()
@@ -23,11 +26,9 @@ const MovieList = ({ listState, setListState }) => {
         )
 
         // Actualizar el estado del listado
-
         setListState(newMovieList)
 
         // Actualizar los datos en el LocalStorage
-
         localStorage.setItem('movies', JSON.stringify(newMovieList))
     }
 
@@ -39,12 +40,27 @@ const MovieList = ({ listState, setListState }) => {
                         <article key={movie.id} className="peli-item">
                             <h3 className="title">{movie.title}</h3>
                             <p className="description">{movie.description}</p>
-                            <button className="edit">Editar</button>
+                            <button
+                                className="edit"
+                                onClick={() => setEdit(movie.id)}>
+                                Editar
+                            </button>
                             <button
                                 className="delete"
                                 onClick={() => deleteMovie(movie.id)}>
                                 Borrar
                             </button>
+
+                            {/* FORMULARIO DE EDITAR */}
+
+                            {edit === movie.id && (
+                                <MovieEdit
+                                    movie={movie}
+                                    getMovies={getMovies}
+                                    setEdit={setEdit}
+                                    setListState={setListState}
+                                />
+                            )}
                         </article>
                     )
                 })

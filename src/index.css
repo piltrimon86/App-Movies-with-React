@@ -178,6 +178,33 @@ input[type='button'] {
     border-color: transparent;
 }
 
+.edit_form div {
+    box-sizing: border-box;
+    width: 90%;
+    margin: 20px;
+    padding: 20px;
+    padding-top: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px #ddd;
+}
+
+.edit_form input[type='text'],
+.edit_form input[type='search'],
+.edit_form textarea {
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 5px;
+    background: #f6f7f9;
+    color: #454545;
+    width: 80%;
+    opacity: 4;
+    outline: 0;
+    border-color: transparent;
+}
+
 /* ESTILOS DEL FOOTER */
 
 .footer {

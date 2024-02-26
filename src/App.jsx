@@ -19,7 +19,10 @@ const App = () => {
             </section>
             {/* Barra lateral */}
             <aside className="lateral">
-                <MovieSearch />
+                <MovieSearch
+                    listState={listState}
+                    setListState={setListState}
+                />
                 <MovieAdd setListState={setListState} />
             </aside>
             {/* Pie de página */}

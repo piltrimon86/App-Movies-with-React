@@ -11,7 +11,9 @@ const App = () => {
             <Header />
             <Navigation />
             {/* Contenido principal */}
-            <MovieList />
+            <section className="content">
+                <MovieList />
+            </section>
             {/* Barra lateral */}
             <aside className="lateral">
                 <MovieSearch />

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
-const MovieList = () => {
-    const [listState, setListState] = useState([])
+const MovieList = ({ listState, setListState }) => {
+    // const [listState, setListState] = useState([])
 
     useEffect(() => {
         getMovies()
@@ -26,7 +26,7 @@ const MovieList = () => {
                     )
                 })
             ) : (
-                <h2>No hay películas par mostrar</h2>
+                <h2>No hay películas para mostrar. Añada las que desee.</h2>
             )}
         </>
     )
